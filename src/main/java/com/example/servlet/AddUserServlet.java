@@ -31,10 +31,8 @@ public class AddUserServlet extends HttpServlet {
         pw.println("<html><body>");
         pw.println("Added user(s) to Warehouse:");
         pw.println("<br>");
-        for (User addedUser : Warehouse.getInstance().getUsers()) {
-            pw.println(addedUser.getFirstName() + " " + addedUser.getLastName());
-            pw.println("<br>");
-        }
+        pw.println("User John Black added to Warehouse");
+        pw.println("<br>");
         pw.println("</body></html>");
 
 
