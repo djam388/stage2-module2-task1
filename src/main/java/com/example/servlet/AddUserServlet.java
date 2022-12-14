@@ -21,7 +21,7 @@ public class AddUserServlet extends HttpServlet {
     }
 
     @Override
-    public void doGet(HttpServletRequest req,HttpServletResponse res)
+    public void doPost(HttpServletRequest req,HttpServletResponse res)
             throws IOException
     {
         res.setContentType("text/html");//setting the content type
