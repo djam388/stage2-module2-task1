@@ -1,5 +1,6 @@
 package com.example.servlet;
 
+import com.example.User;
 import com.example.Warehouse;
 
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +21,11 @@ public class GetUsersServlet extends HttpServlet {
 
 //writing html in the stream
         pw.println("<html><body>");
-        req.setAttribute("users", Warehouse.getInstance());
-        pw.println(Warehouse.getInstance().getUsers());
+        req.setAttribute("users", Warehouse.getInstance().getUsers());
+        for (User addedUser : Warehouse.getInstance().getUsers()) {
+            pw.println(addedUser.getFirstName() + " " + addedUser.getLastName());
+            pw.println("<br>");
+        }
         pw.println("</body></html>");
 
 
