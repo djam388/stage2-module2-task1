@@ -23,6 +23,7 @@ public class GetUsersServlet extends HttpServlet {
         pw.println("<html><body>");
         pw.println("List of users added to Warehouse:");
         pw.println("<br>");
+        req.setAttribute("users", Warehouse.getInstance().getUsers());
         for (User addedUser : Warehouse.getInstance().getUsers()) {
             pw.println(addedUser.getFirstName() + " " + addedUser.getLastName());
             pw.println("<br>");
