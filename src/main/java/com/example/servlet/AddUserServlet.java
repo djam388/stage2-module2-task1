@@ -3,6 +3,8 @@ package com.example.servlet;
 import com.example.User;
 import com.example.Warehouse;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +19,7 @@ public class AddUserServlet extends HttpServlet {
     }
     @Override
     public void doGet(HttpServletRequest req,HttpServletResponse res)
-            throws IOException
-    {
+            throws IOException, ServletException {
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         if (firstName != null && lastName != null ) {
@@ -32,6 +33,8 @@ public class AddUserServlet extends HttpServlet {
         pw.println("User number added to Warehouse: " + Warehouse.getInstance().getUsers().size());
         pw.println("<br>");
 
+        RequestDispatcher reqd = req.getRequestDispatcher("add");
+        reqd.forward(req, res);
 
     }
     @Override
