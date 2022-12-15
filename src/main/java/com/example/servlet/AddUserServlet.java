@@ -19,11 +19,12 @@ public class AddUserServlet extends HttpServlet {
     public void doGet(HttpServletRequest req,HttpServletResponse res)
             throws IOException
     {
-        String firstName = req.getParameter("firstname");
-        String lastName = req.getParameter("lastname");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
         if (firstName != null && lastName != null ) {
             Warehouse.getInstance().addUser(new User(firstName, lastName));
         }
+        req.setAttribute("user", new User(firstName, lastName));
         res.setContentType("text/html");//setting the content type
         PrintWriter pw=res.getWriter();//get the stream to write the data
         pw.println("<html><body>");
