@@ -24,6 +24,8 @@ public class AddUserServlet extends HttpServlet {
         String lastName = req.getParameter("lastName");
         if (firstName != null && lastName != null ) {
             Warehouse.getInstance().addUser(new User(firstName, lastName));
+            RequestDispatcher reqd = getServletContext().getRequestDispatcher("/");
+            reqd.forward(req, res);
         }
         req.setAttribute("user", new User(firstName, lastName));
         res.setContentType("text/html");//setting the content type
@@ -33,8 +35,7 @@ public class AddUserServlet extends HttpServlet {
         pw.println("User number added to Warehouse: " + Warehouse.getInstance().getUsers().size());
         pw.println("<br>");
 
-        RequestDispatcher reqd = req.getRequestDispatcher("add");
-        reqd.forward(req, res);
+
 
     }
     @Override
